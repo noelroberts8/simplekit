@@ -63,6 +63,11 @@ export class SKButton extends SKElement {
     this._highlightColour = hc;
   }
 
+  protected _textBaseLine: CanvasTextBaseline = "middle";
+  set textBaseLine(bl: CanvasTextBaseline){
+    this._textBaseLine = bl;
+  }
+
 
   setMinimalSize(width?: number, height?: number) {
     width = width || this.width;
@@ -147,7 +152,7 @@ export class SKButton extends SKElement {
     gc.font = this._font;
     gc.fillStyle = this._fontColour;
     gc.textAlign = "center";
-    gc.textBaseline = "middle";
+    gc.textBaseline = this._textBaseLine;
     gc.fillText(this.text, this.x + w / 2, this.y + h / 2);
 
     gc.restore();
